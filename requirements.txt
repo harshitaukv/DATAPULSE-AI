@@ -1,5 +1,4 @@
-# Dashboard (Streamlit). Contains no backend code or secrets.
-streamlit==1.65.0
-plotly==7.1.0
-pandas==3.0.2
-requests==2.33.1
+# Everything needed to run backend, dashboard and tests on one machine.
+-r backend/requirements.txt
+-r frontend/requirements.txt
+-r requirements-dev.txt

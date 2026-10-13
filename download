@@ -1,0 +1,32 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+data/.dev_encryption_key
+
+# Runtime data (never commit uploads or outputs)
+data/uploads/*
+data/processed/*
+data/reports/*
+data/index/*
+data/models/*
+data/sample/*
+data/*.db
+!data/**/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.streamlit/secrets.toml

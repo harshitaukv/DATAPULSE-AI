@@ -1,0 +1,41 @@
+# Visual identity: each ETL stage owns a hue (Extract blue, Validate violet,
+# Transform pink, Quality gold, Load green) on a cool lavender canvas,
+# with a deep-indigo sidebar.
+[theme]
+base = "light"
+primaryColor = "#6E4BF2"
+backgroundColor = "#F5F6FC"
+secondaryBackgroundColor = "#ECEEFA"
+textColor = "#1B1640"
+borderColor = "#E1E3F2"
+linkColor = "#6E4BF2"
+font = "Manrope:https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap, Segoe UI, sans-serif"
+headingFont = "Sora:https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&display=swap, Manrope, Segoe UI, sans-serif"
+baseRadius = "10px"
+buttonRadius = "10px"
+showWidgetBorder = true
+dataframeHeaderBackgroundColor = "#EEF0FB"
+chartCategoricalColors = ["#2E90FA", "#7A5AF8", "#EE46BC", "#EAAA08", "#12B76A", "#F04438", "#06AED4", "#F79009"]
+redColor = "#F04438"
+orangeColor = "#F79009"
+yellowColor = "#EAAA08"
+blueColor = "#2E90FA"
+greenColor = "#12B76A"
+violetColor = "#7A5AF8"
+
+[theme.sidebar]
+backgroundColor = "#1B1640"
+secondaryBackgroundColor = "#2A2360"
+textColor = "#E9E6FF"
+borderColor = "#3A3278"
+primaryColor = "#B9A8FF"
+
+[server]
+maxUploadSize = 20
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"

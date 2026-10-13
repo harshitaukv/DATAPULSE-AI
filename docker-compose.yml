@@ -1,0 +1,50 @@
+# Local stack: PostgreSQL + FastAPI backend + Streamlit dashboard.
+#   cp .env.example .env   (fill SECRET_KEY, DATA_ENCRYPTION_KEY, passwords)
+#   docker compose up --build
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: datapulse
+      POSTGRES_USER: datapulse
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U datapulse -d datapulse"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    # Not published to the host: only the backend can reach the database.
+
+  backend:
+    build:
+      context: .
+      target: backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg2://datapulse:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/datapulse
+      CORS_ORIGINS: http://localhost:8501
+    volumes:
+      - appdata:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: .
+      target: frontend
+    environment:
+      API_BASE_URL: http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8501:8501"
+
+volumes:
+  pgdata:
+  appdata:
