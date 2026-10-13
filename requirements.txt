@@ -1,0 +1,5 @@
+# Dashboard (Streamlit). Contains no backend code or secrets.
+streamlit==1.65.0
+plotly==7.1.0
+pandas==3.0.2
+requests==2.33.1
